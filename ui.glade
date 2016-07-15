@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.20.0 -->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkAdjustment" id="adjustment1">
+    <property name="upper">16</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkImage" id="clipboard_image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">clipboard.png</property>
+  </object>
+  <object class="GtkWindow" id="Main Window">
+    <property name="can_focus">False</property>
+    <signal name="delete-event" handler="onDeleteWindow" swapped="no"/>
+    <child>
+      <object class="GtkFixed">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkEntry" id="generated_pass_txtbox">
+            <property name="width_request">315</property>
+            <property name="height_request">34</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="editable">False</property>
+            <property name="caps_lock_warning">False</property>
+            <property name="placeholder_text" translatable="yes">Generated passwords will appear here</property>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">29</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="n_chars_lbl">
+            <property name="width_request">100</property>
+            <property name="height_request">34</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">N.char:</property>
+          </object>
+          <packing>
+            <property name="x">9</property>
+            <property name="y">93</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSpinButton" id="n_chars_spin_btn">
+            <property name="width_request">117</property>
+            <property name="height_request">34</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="adjustment">adjustment1</property>
+            <property name="value">8</property>
+          </object>
+          <packing>
+            <property name="x">93</property>
+            <property name="y">91</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="letters_lbl">
+            <property name="width_request">126</property>
+            <property name="height_request">20</property>
+            <property name="visible">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Letters:</property>
+          </object>
+          <packing>
+            <property name="x">26</property>
+            <property name="y">160</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="uppercase_letters_lbl">
+            <property name="width_request">126</property>
+            <property name="height_request">20</property>
+            <property name="visible">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Uppercase letters:</property>
+          </object>
+          <packing>
+            <property name="x">26</property>
+            <property name="y">190</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="numbers_lbl">
+            <property name="width_request">126</property>
+            <property name="height_request">20</property>
+            <property name="visible">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Numbers:</property>
+          </object>
+          <packing>
+            <property name="x">26</property>
+            <property name="y">220</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="simbols_lbl">
+            <property name="width_request">126</property>
+            <property name="height_request">20</property>
+            <property name="visible">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Simbols:</property>
+          </object>
+          <packing>
+            <property name="x">26</property>
+            <property name="y">250</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="allowed_lbl">
+            <property name="width_request">55</property>
+            <property name="height_request">20</property>
+            <property name="visible">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Allowed</property>
+          </object>
+          <packing>
+            <property name="x">230</property>
+            <property name="y">130</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="required_lbl">
+            <property name="width_request">62</property>
+            <property name="height_request">20</property>
+            <property name="visible">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Required</property>
+          </object>
+          <packing>
+            <property name="x">360</property>
+            <property name="y">130</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="letters_allowed_check_btn">
+            <property name="width_request">20</property>
+            <property name="height_request">22</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="use_stock">True</property>
+            <property name="draw_indicator">True</property>
+            <signal name="toggled" handler="disable_required_field" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">250</property>
+            <property name="y">160</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="uppercase_letters_allowed_check_btn">
+            <property name="width_request">20</property>
+            <property name="height_request">21</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="use_stock">True</property>
+            <property name="draw_indicator">True</property>
+            <signal name="toggled" handler="disable_required_field" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">250</property>
+            <property name="y">190</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="simbols_allowed_check_btn">
+            <property name="width_request">20</property>
+            <property name="height_request">22</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="use_stock">True</property>
+            <property name="draw_indicator">True</property>
+            <signal name="toggled" handler="disable_required_field" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">250</property>
+            <property name="y">250</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="numbers_allowed_check_btn">
+            <property name="width_request">20</property>
+            <property name="height_request">22</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="use_stock">True</property>
+            <property name="draw_indicator">True</property>
+            <signal name="toggled" handler="disable_required_field" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">250</property>
+            <property name="y">220</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="generate_btn">
+            <property name="label" translatable="yes">Generate!</property>
+            <property name="width_request">100</property>
+            <property name="height_request">34</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="is_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="on_generate_btn_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">376</property>
+            <property name="y">300</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="clipboard_btn">
+            <property name="width_request">34</property>
+            <property name="height_request">34</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="image">clipboard_image</property>
+            <signal name="clicked" handler="copy_password" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">375</property>
+            <property name="y">32</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="letters_required_check_btn">
+            <property name="width_request">20</property>
+            <property name="height_request">20</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="use_stock">True</property>
+            <property name="draw_indicator">True</property>
+            <signal name="toggled" handler="check_if_toggable" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">380</property>
+            <property name="y">160</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="uppercase_letters_required_check_btn">
+            <property name="width_request">20</property>
+            <property name="height_request">20</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="use_stock">True</property>
+            <property name="draw_indicator">True</property>
+            <signal name="toggled" handler="check_if_toggable" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">380</property>
+            <property name="y">190</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="numbers_required_check_btn">
+            <property name="width_request">20</property>
+            <property name="height_request">20</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="use_stock">True</property>
+            <property name="draw_indicator">True</property>
+            <signal name="toggled" handler="check_if_toggable" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">380</property>
+            <property name="y">220</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="simbols_required_check_btn">
+            <property name="width_request">20</property>
+            <property name="height_request">22</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="use_stock">True</property>
+            <property name="draw_indicator">True</property>
+            <signal name="toggled" handler="check_if_toggable" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">380</property>
+            <property name="y">250</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
