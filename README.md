@@ -1,3 +1,5 @@
+# Password Generator
+
 Tired of thinking a new password with absurd rules for each website you would like to register?
 
 Try **PasswordGenerator**, a small GTK 3.0 app written in python!
