@@ -50,6 +50,9 @@ class Generator(object):
 
         #Starting to generate the password
 
+        if len(allowed_chars) == 0:
+            return ""
+
         password = ""
         num_of_letters = 0
         num_of_numbers = 0
@@ -96,13 +99,7 @@ if __name__ == "__main__":
     g3 = Generator(length = 8, letters_allowed = False, numbers_allowed = False, caps_letters_allowed = False, special_characters_allowed = True)
     #only simbols and numbers, exactly 4 and 4
     g4 = Generator(length = 8, letters_allowed = False, numbers_allowed = True, caps_letters_allowed = False, special_characters_allowed = True, min_num_of_letters = 0, min_num_of_numbers = 4, min_num_of_caps_letters = 0, min_num_of_special_characters = 4)
-    print("all")
-    print(g.generate())
-    print("only numbers")
-    print(g1.generate())
-    print("only uppercase letters")
-    print(g2.generate())
-    print("only simbols")
-    print(g3.generate())
-    print("only simbols and numbers, exactly 4 and 4")
-    print(g4.generate())
+    #no simbols
+    g5 = Generator(length = 8, letters_allowed = True, numbers_allowed = True, caps_letters_allowed = True, special_characters_allowed = False)
+
+    print(g5.generate())
