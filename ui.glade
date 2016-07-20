@@ -2,8 +2,28 @@
 <!-- Generated with glade 3.20.0 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkAdjustment" id="adjustment1">
-    <property name="upper">16</property>
+  <object class="GtkAdjustment" id="adjustment_length_password">
+    <property name="upper">50</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_letters_required">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_numbers_required">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_simbols_required">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_uppercase_letters_required">
+    <property name="upper">100</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
@@ -53,7 +73,7 @@
             <property name="height_request">34</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="adjustment">adjustment1</property>
+            <property name="adjustment">adjustment_length_password</property>
             <property name="value">8</property>
           </object>
           <packing>
@@ -86,7 +106,7 @@
           </object>
           <packing>
             <property name="x">26</property>
-            <property name="y">190</property>
+            <property name="y">200</property>
           </packing>
         </child>
         <child>
@@ -100,7 +120,7 @@
           </object>
           <packing>
             <property name="x">26</property>
-            <property name="y">220</property>
+            <property name="y">240</property>
           </packing>
         </child>
         <child>
@@ -114,7 +134,7 @@
           </object>
           <packing>
             <property name="x">26</property>
-            <property name="y">250</property>
+            <property name="y">280</property>
           </packing>
         </child>
         <child>
@@ -154,7 +174,7 @@
             <property name="receives_default">False</property>
             <property name="use_stock">True</property>
             <property name="draw_indicator">True</property>
-            <signal name="toggled" handler="disable_required_field" swapped="no"/>
+            <signal name="toggled" handler="activate_sibling" object="letters_required_spin_btn" swapped="no"/>
           </object>
           <packing>
             <property name="x">250</property>
@@ -170,11 +190,11 @@
             <property name="receives_default">False</property>
             <property name="use_stock">True</property>
             <property name="draw_indicator">True</property>
-            <signal name="toggled" handler="disable_required_field" swapped="no"/>
+            <signal name="toggled" handler="activate_sibling" object="uppercase_letters_required_spin_btn" swapped="no"/>
           </object>
           <packing>
             <property name="x">250</property>
-            <property name="y">190</property>
+            <property name="y">200</property>
           </packing>
         </child>
         <child>
@@ -186,11 +206,11 @@
             <property name="receives_default">False</property>
             <property name="use_stock">True</property>
             <property name="draw_indicator">True</property>
-            <signal name="toggled" handler="disable_required_field" swapped="no"/>
+            <signal name="toggled" handler="activate_sibling" object="simbols_required_spin_btn" swapped="no"/>
           </object>
           <packing>
             <property name="x">250</property>
-            <property name="y">250</property>
+            <property name="y">280</property>
           </packing>
         </child>
         <child>
@@ -202,11 +222,11 @@
             <property name="receives_default">False</property>
             <property name="use_stock">True</property>
             <property name="draw_indicator">True</property>
-            <signal name="toggled" handler="disable_required_field" swapped="no"/>
+            <signal name="toggled" handler="activate_sibling" object="numbers_required_spin_btn" swapped="no"/>
           </object>
           <packing>
             <property name="x">250</property>
-            <property name="y">220</property>
+            <property name="y">240</property>
           </packing>
         </child>
         <child>
@@ -221,8 +241,8 @@
             <signal name="clicked" handler="on_generate_btn_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">376</property>
-            <property name="y">300</property>
+            <property name="x">419</property>
+            <property name="y">342</property>
           </packing>
         </child>
         <child>
@@ -241,67 +261,92 @@
           </packing>
         </child>
         <child>
-          <object class="GtkCheckButton" id="letters_required_check_btn">
-            <property name="width_request">20</property>
+          <object class="GtkSpinButton" id="letters_required_spin_btn">
+            <property name="width_request">114</property>
             <property name="height_request">20</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="use_stock">True</property>
-            <property name="draw_indicator">True</property>
-            <signal name="toggled" handler="check_if_toggable" swapped="no"/>
+            <property name="editable">False</property>
+            <property name="caps_lock_warning">False</property>
+            <property name="adjustment">adjustment_letters_required</property>
           </object>
           <packing>
-            <property name="x">380</property>
+            <property name="x">336</property>
             <property name="y">160</property>
           </packing>
         </child>
         <child>
-          <object class="GtkCheckButton" id="uppercase_letters_required_check_btn">
-            <property name="width_request">20</property>
-            <property name="height_request">20</property>
+          <object class="GtkSpinButton" id="uppercase_letters_required_spin_btn">
+            <property name="width_request">114</property>
+            <property name="height_request">34</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="use_stock">True</property>
-            <property name="draw_indicator">True</property>
-            <signal name="toggled" handler="check_if_toggable" swapped="no"/>
+            <property name="editable">False</property>
+            <property name="caps_lock_warning">False</property>
+            <property name="adjustment">adjustment_uppercase_letters_required</property>
           </object>
           <packing>
-            <property name="x">380</property>
-            <property name="y">190</property>
+            <property name="x">336</property>
+            <property name="y">200</property>
           </packing>
         </child>
         <child>
-          <object class="GtkCheckButton" id="numbers_required_check_btn">
-            <property name="width_request">20</property>
-            <property name="height_request">20</property>
+          <object class="GtkSpinButton" id="numbers_required_spin_btn">
+            <property name="width_request">114</property>
+            <property name="height_request">34</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="use_stock">True</property>
-            <property name="draw_indicator">True</property>
-            <signal name="toggled" handler="check_if_toggable" swapped="no"/>
+            <property name="editable">False</property>
+            <property name="caps_lock_warning">False</property>
+            <property name="adjustment">adjustment_numbers_required</property>
           </object>
           <packing>
-            <property name="x">380</property>
-            <property name="y">220</property>
+            <property name="x">336</property>
+            <property name="y">240</property>
           </packing>
         </child>
         <child>
-          <object class="GtkCheckButton" id="simbols_required_check_btn">
-            <property name="width_request">20</property>
-            <property name="height_request">22</property>
+          <object class="GtkSpinButton" id="simbols_required_spin_btn">
+            <property name="width_request">114</property>
+            <property name="height_request">34</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="editable">False</property>
+            <property name="caps_lock_warning">False</property>
+            <property name="adjustment">adjustment_simbols_required</property>
+          </object>
+          <packing>
+            <property name="x">336</property>
+            <property name="y">280</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="characters_allowed_check_btn">
+            <property name="label" translatable="yes">Use only this characters:</property>
+            <property name="width_request">173</property>
+            <property name="height_request">28</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
-            <property name="use_stock">True</property>
             <property name="draw_indicator">True</property>
-            <signal name="toggled" handler="check_if_toggable" swapped="no"/>
+            <signal name="toggled" handler="activate_sibling" object="characters_allowed_txtbox" swapped="no"/>
           </object>
           <packing>
-            <property name="x">380</property>
-            <property name="y">250</property>
+            <property name="x">17</property>
+            <property name="y">345</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="characters_allowed_txtbox">
+            <property name="width_request">168</property>
+            <property name="height_request">34</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="editable">False</property>
+          </object>
+          <packing>
+            <property name="x">200</property>
+            <property name="y">343</property>
           </packing>
         </child>
       </object>
