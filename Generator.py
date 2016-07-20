@@ -2,7 +2,7 @@ import random
 
 class Generator(object):
 
-    def __init__(self, length = 8, letters_allowed = True, numbers_allowed = True, caps_letters_allowed = True, special_characters_allowed = True, min_num_of_letters = 0, min_num_of_numbers = 0, min_num_of_caps_letters = 0, min_num_of_special_characters = 0, letters = "qwertyuiopasdfghjklzxcvbnm", uppercase_letters = "QWERTYUIOPASDFGHJKLZXCVBNM", numbers = "0123456789", simbols = "!@#$%^&*()-_=+[]{};:\"\\|,<.>/?\"'`"):
+    def __init__(self, length = 8, letters_allowed = True, numbers_allowed = True, caps_letters_allowed = True, special_characters_allowed = True, min_num_of_letters = 0, min_num_of_numbers = 0, min_num_of_caps_letters = 0, min_num_of_special_characters = 0, letters = "qwertyuiopasdfghjklzxcvbnm", uppercase_letters = "QWERTYUIOPASDFGHJKLZXCVBNM", numbers = "0123456789", simbols = "!@#$%^&*()-_=+[]{};:\"\\|,<.>/?\"'`", allowed_chars = ""):
        self.length = length
 
        self.numbers_allowed = numbers_allowed
@@ -19,39 +19,42 @@ class Generator(object):
        self.uppercase_letters = uppercase_letters
        self.numbers = numbers
        self.simbols = simbols
+       self.allowed_chars = list(set(allowed_chars))
 
     def generate(self):
         #building the set of allowed characters
-        allowed_chars = []
+        allowed_chars = self.allowed_chars
 
-        if self.letters_allowed:
-            start_index_letters = len(allowed_chars)
-            for char in self.letters:
-                allowed_chars.append(char)
-            end_index_letters = len(allowed_chars) - 1
+        if not len(allowed_chars) > 0:
 
-        if self.caps_letters_allowed:
-            start_index_uppercase_letters = len(allowed_chars)
-            for char in self.uppercase_letters:
-                allowed_chars.append(char)
-            end_index_uppercase_letters = len(allowed_chars) - 1
+            if self.letters_allowed:
+                start_index_letters = len(allowed_chars)
+                for char in self.letters:
+                    allowed_chars.append(char)
+                end_index_letters = len(allowed_chars) - 1
 
-        if self.numbers_allowed:
-            start_index_numbers = len(allowed_chars)
-            for char in self.numbers:
-                allowed_chars.append(char)
-            end_index_numbers = len(allowed_chars) - 1
+            if self.caps_letters_allowed:
+                start_index_uppercase_letters = len(allowed_chars)
+                for char in self.uppercase_letters:
+                    allowed_chars.append(char)
+                end_index_uppercase_letters = len(allowed_chars) - 1
 
-        if self.special_characters_allowed:
-            start_index_special_characters = len(allowed_chars)
-            for char in self.simbols:
-                allowed_chars.append(char)
-            end_index_special_characters = len(allowed_chars) - 1
+            if self.numbers_allowed:
+                start_index_numbers = len(allowed_chars)
+                for char in self.numbers:
+                    allowed_chars.append(char)
+                end_index_numbers = len(allowed_chars) - 1
+
+            if self.special_characters_allowed:
+                start_index_special_characters = len(allowed_chars)
+                for char in self.simbols:
+                    allowed_chars.append(char)
+                end_index_special_characters = len(allowed_chars) - 1
+                
+            if len(allowed_chars) == 0:
+                return ""
 
         #Starting to generate the password
-
-        if len(allowed_chars) == 0:
-            return ""
 
         password = ""
         num_of_letters = 0
@@ -101,5 +104,7 @@ if __name__ == "__main__":
     g4 = Generator(length = 8, letters_allowed = False, numbers_allowed = True, caps_letters_allowed = False, special_characters_allowed = True, min_num_of_letters = 0, min_num_of_numbers = 4, min_num_of_caps_letters = 0, min_num_of_special_characters = 4)
     #no simbols
     g5 = Generator(length = 8, letters_allowed = True, numbers_allowed = True, caps_letters_allowed = True, special_characters_allowed = False)
+    #only a and b
+    g6 = Generator(length = 8, letters_allowed = True, numbers_allowed = True, caps_letters_allowed = True, special_characters_allowed = False, allowed_chars = "ab")
 
-    print(g5.generate())
+    print(g6.generate())
